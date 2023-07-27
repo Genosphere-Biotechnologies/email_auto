@@ -427,7 +427,7 @@ class ExcelModifier:
 
 if __name__ == "__main__":
 
-    folder_path = "Updates/"  # Change this to your desired folder path
+    folder_path = "./Updates/"  # Change this to your desired folder path
     files = get_files_in_folder(folder_path)
     timestr = time.strftime("%Y_%m_%d_%H_%M_%S")
 
