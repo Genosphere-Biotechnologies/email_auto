@@ -214,7 +214,7 @@ class ExcelModifier:
         for numpep in range(num_repeat):
             self.label_list = []
             self.buttons_list = []
-            offset = 12 * numpep
+            offset = 12 * numpep +4
             self.label_list.append(Label(self.root, text="  ", font=self.button_font))
             self.label_list[-1].grid(row=0 + 2 + offset, column=0, sticky=W)
             if num_repeat == 1:
@@ -246,30 +246,30 @@ class ExcelModifier:
         self.buttons_list_end = []
         for index, (label_text, options) in enumerate(self.step_data2):
             self.label_list_end.append(Label(self.root, text=label_text, font=self.button_font))
-            self.label_list_end[-1].grid(row=index + len(self.step_data) + offset + 7*num_repeat, column=0, sticky=W)
+            self.label_list_end[-1].grid(row=index + 2*len(self.step_data) + offset + 7*num_repeat, column=0, sticky=W)
             self.buttons_list_end.append([])
             for option_index, option in enumerate(options):
                 self.buttons_list_end[-1].append(Radiobutton(self.root, text=option, variable=self.field_vars[-1],
                                                          value=option, font=self.button_font,
                                                          height=1, width=15, indicatoron=0))
-                self.buttons_list_end[-1][-1].grid(row=index + len(self.step_data) + offset + 7*num_repeat, column=option_index + 1,
+                self.buttons_list_end[-1][-1].grid(row=index + 2*len(self.step_data) + offset + 7*num_repeat, column=option_index + 1,
                                                sticky=W)
                 self.radiobuttons.append(self.buttons_list_end[-1][-1])
 
 
         self.label3 = Label(self.root, text="  ", font=self.button_font)
-        self.label3.grid(row=len(self.step_data) + len(self.step_data)+ offset, column=0, sticky=W)
+        self.label3.grid(row=len(self.step_data) + 2*len(self.step_data)+ offset, column=0, sticky=W)
         # Add a label and text field for updating the date of receipt
         self.date_label = Label(self.root, text="Date of completion: ", font=self.button_font)
-        self.date_label.grid(row=len(self.step_data) + 8+ offset, column=0, sticky=W)
+        self.date_label.grid(row=2*len(self.step_data) + 8+ offset+ 7*num_repeat, column=0, sticky=W)
 
         self.date_var = StringVar()
         self.date_entry = Entry(self.root, textvariable=self.date_var, font=self.button_font)
         self.date_var.set(self.date_value)
-        self.date_entry.grid(row=len(self.step_data) + 8+ offset, column=1)
+        self.date_entry.grid(row=2*len(self.step_data) + 8+ offset+ 7*num_repeat, column=1)
 
         self.label4 = Label(self.root, text="  ", font=self.button_font)
-        self.label4.grid(row=len(self.step_data) + 10+ offset, column=0, sticky=W)
+        self.label4.grid(row=2*len(self.step_data) + 10+ offset+ 7*num_repeat, column=0, sticky=W)
 
         # Create a button to trigger the modification process
 
@@ -280,10 +280,10 @@ class ExcelModifier:
         self.modify_button = Button(self.root, text="Create Excel", command=self.modify_excel_multiple,
                                         font=self.button_font)
 
-        self.modify_button.grid(row=len(self.step_data) + 11+ offset, columnspan=len(self.step_data[0][1]) + 1)
+        self.modify_button.grid(row=2*len(self.step_data) + 11+ offset+ 7*num_repeat, columnspan=len(self.step_data[0][1]) + 1)
 
         self.next_button = Button(self.root, text="Next", command=self.on_next_button_click, font=self.button_font)
-        self.next_button.grid(row=len(self.step_data) + 12+ offset, columnspan=len(self.step_data[0][1]) + 1)
+        self.next_button.grid(row=2*len(self.step_data) + 12+ offset+ 7*num_repeat, columnspan=len(self.step_data[0][1]) + 1)
 
 
         # Bind the checkbox to the function to update the Radiobuttons visibility
