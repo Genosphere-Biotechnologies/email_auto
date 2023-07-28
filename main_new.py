@@ -427,17 +427,17 @@ class ExcelModifier:
 
 if __name__ == "__main__":
 
-    folder_path = "./Updates/"  # Change this to your desired folder path
+    folder_path = "../U0_Updates/"  # Change this to your desired folder path
     files = get_files_in_folder(folder_path)
     timestr = time.strftime("%Y_%m_%d_%H_%M_%S")
 
-    PATH = f"excel_commande_update/{timestr}/"
+    PATH = f"../Un_Updates/{timestr}/"
     if not os.path.exists(PATH):
         os.makedirs(PATH)
 
 
     txtfiles = []
-    for file in glob.glob("excel_commande_update/*/*.xlsx"):
+    for file in glob.glob("Un_Updates/*/*.xlsx"):
         print(file)
         txtfiles.append(file)
     print(txtfiles)
