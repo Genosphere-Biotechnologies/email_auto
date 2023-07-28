@@ -13,7 +13,8 @@ class ExcelModifier:
         self.path_to_save = path_to_save
         self.file_path = file_path
         self.filename = filename
-        self.name_file = file_path.split("-")[1] + "-" + file_path.split("-")[-1].split(".")[0]
+        #print(file_path)
+        self.name_file = file_path.split("-")[-1].split(".")[0]
 
         self.number_of_product, self.number_of_line, self.column_linevf, self.sheet, \
         self.letters, self.name_file, self.workbook, self.version_toprint, self.cpt_update, \
@@ -31,7 +32,7 @@ class ExcelModifier:
 
 
         self.root = Tk()
-        self.root.title(" Excel Modifier " + self.name_file_U + " - Update " + str(self.cpt_update))
+        self.root.title(" Create Excel " + self.name_file_U) #+ " - Update " + str(self.cpt_update))
         # Set the font size for the labels to 14
         self.label_font = Font(size=30)
         # Set the font size for the buttons to 12
@@ -445,7 +446,7 @@ if __name__ == "__main__":
 
     for filename in files:
         file_path = folder_path + filename
-        name_file = file_path.split("-")[1] + "-" + file_path.split("-")[-1].split(".")[0]
+        name_file = file_path.split("-")[-1].split(".")[0]
         #print(name_file)
         #test Un
         update = None
