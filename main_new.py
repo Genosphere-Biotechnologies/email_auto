@@ -62,7 +62,8 @@ class ExcelModifier:
                 selected_value = ""
             #self.sheet.cell(row=index + offset_line, column=column_line + 1, value=selected_value)
             self.sheet.cell(row=index + offset_line, column=column_line, value=label_text + tiret + selected_value)
-
+            if "COMPLETED" in label_text + tiret + selected_value or "ACHEVEE" in label_text + tiret + selected_value:
+                self.sheet.cell.fill = openpyxl.styles.PatternFill('solid', openpyxl.styles.colors.GREEN)
 
         self.line_date_arrive = -1
         for i in range(1, 100):
@@ -126,6 +127,8 @@ class ExcelModifier:
 
         for ix, x in enumerate(list_index_1):
             self.sheet.cell(row=ix + offset_line, column=column_line, value=x)
+            if "COMPLETED" in x or "ACHEVEE" in x:
+                self.sheet.cell.fill = openpyxl.styles.PatternFill('solid', openpyxl.styles.colors.GREEN)
 
         self.line_date_arrive = -1
         for i in range(1, 100):
