@@ -149,6 +149,9 @@ class ExcelModifier:
         self.workbook.save(modified_file_path)
 
         print("Excel file modified and saved successfully.")
+
+        os.system(f"open {self.path_to_save}/{self.name_file_U}")
+
         self.root.destroy()
 
 
