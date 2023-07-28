@@ -104,11 +104,11 @@ def get_info_file(file_path):
                     if str(j) == value[0]:
                         flag_num = True
                         #last = j
-                if value != "*** NEW SYNTHESIS ATTEMPT ***":
+                if value != "*** NEW SYNTHESIS ATTEMPT ***-":
                     if flag_num is False:
                         value = str(len(step_data)) + value
                     #print(value)
-                if value == "*** NEW SYNTHESIS ATTEMPT ***":
+                if value == "*** NEW SYNTHESIS ATTEMPT ***-":
                     step_data.append((value, []))
                 else:
                     step_data.append((value, possibility_button))
