@@ -85,6 +85,7 @@ class ExcelModifier:
         self.workbook.save(modified_file_path)
 
         print("Excel file modified and saved successfully.")
+        os.system(f"open {self.path_to_save}/{self.name_file_U}")
         self.root.destroy()
         #ok
 
@@ -95,7 +96,7 @@ class ExcelModifier:
         if self.LANGUAGE == "FR":
             text_label_pep = "- Peptide "  # + str(peptid+1)
         else:
-            text_label_pep = "- Peptid "  # + str(peptid+1)
+            text_label_pep = "- Peptide "  # + str(peptid+1)
         #list_index_1.append(text_label_pep)
         for ix, x in  enumerate(self.field_vars):
             peptid = ix // len(self.step_data)
@@ -378,8 +379,6 @@ class ExcelModifier:
                 self.buttons_list[-1].append(Radiobutton(self.root, text=option, variable=self.field_vars[index],
                                                          value=option, font=self.button_font,
                                                          height=2, width=10, indicatoron=0))
-                #if option_index ==len(options)-1:
-                #field_vars[index].set(value="Empty")
                 self.buttons_list[-1][-1].grid(row=index + len(self.step_data), column=option_index + 1, sticky=W)
                 radiobuttons.append(self.buttons_list[-1][-1])
 
@@ -430,7 +429,7 @@ if __name__ == "__main__":
 
     folder_path = "../U0_Updates/"  # Change this to your desired folder path
     files = get_files_in_folder(folder_path)
-    timestr = time.strftime("%Y_%m_%d_%H_%M_%S")
+    timestr = time.strftime("%Y_%m_%d")#_%H_%M_%S")
 
     PATH = f"../Un_Updates/{timestr}/"
     if not os.path.exists(PATH):
@@ -438,7 +437,7 @@ if __name__ == "__main__":
 
 
     txtfiles = []
-    for file in glob.glob("Un_Updates/*/*.xlsx"):
+    for file in glob.glob("../Un_Updates/*/*.xlsx"):
         print(file)
         txtfiles.append(file)
     print(txtfiles)
