@@ -97,7 +97,7 @@ def get_info_file(file_path):
         else:
             if sheet[letters[column_linevf - 1] + str(
                     number_of_line_status + 1 + i)].value is not None:
-                value = str(sheet[letters[column_linevf-1]+str(number_of_line_status+1+i)].value).split("-")[0]
+                value = str(sheet[letters[column_linevf-1]+str(number_of_line_status+1+i)].value).split("-")[0] + "-"
                 flag_num = False
                 print(sheet[letters[column_linevf-1]+str(number_of_line_status+1+i)].value)
                 for j in range(1, 100):
