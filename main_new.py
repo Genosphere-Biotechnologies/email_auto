@@ -156,8 +156,13 @@ class ExcelModifier:
             raise "PB"
         else:
             print(" line_date_arrive  ", self.line_date_arrive)
+
+        stars = ""
+        if self.field_vars[-1].get() == "YES":
+            stars = " *** "
+
         self.sheet[
-            self.letters[self.column_linevf - 1] + str(self.line_date_arrive + 1)].value = self.date_var.get()
+            self.letters[self.column_linevf - 1] + str(self.line_date_arrive + 1)].value = stars + self.date_var.get() + stars
 
         # Save the modified Excel file
         #PATH = f"{self.path_to_save}/{self.name_file}/"
