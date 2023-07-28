@@ -236,7 +236,7 @@ class ExcelModifier:
                 for option_index, option in enumerate(options):
                     self.buttons_list[-1].append(Radiobutton(self.root, text=option, variable=self.field_vars[index + numpep * len(self.step_data)],
                                                              value=option, font=self.button_font,
-                                                             height=2, width=15, indicatoron=0))
+                                                             height=1, width=15, indicatoron=0))
                     self.buttons_list[-1][-1].grid(row=index + len(self.step_data)+ offset, column=option_index + 1, sticky=W)
                     self.radiobuttons.append(self.buttons_list[-1][-1])
                 self.label_list_all.append(self.label_list)
@@ -251,7 +251,7 @@ class ExcelModifier:
             for option_index, option in enumerate(options):
                 self.buttons_list_end[-1].append(Radiobutton(self.root, text=option, variable=self.field_vars[-1],
                                                          value=option, font=self.button_font,
-                                                         height=2, width=15, indicatoron=0))
+                                                         height=1, width=15, indicatoron=0))
                 self.buttons_list_end[-1][-1].grid(row=index + len(self.step_data) + offset + 7*num_repeat, column=option_index + 1,
                                                sticky=W)
                 self.radiobuttons.append(self.buttons_list_end[-1][-1])
