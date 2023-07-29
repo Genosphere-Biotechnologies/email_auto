@@ -57,6 +57,7 @@ class ExcelModifier:
         else:
             text_label_pep = "- Peptide "  # + str(peptid+1)
         #list_index_1.append(text_label_pep)
+        selected_value_for_next_U = []
         for ix, x in  enumerate(self.field_vars):
             peptid = ix // len(self.step_data)
             if update_all_products == 1 and peptid > 0:
@@ -74,6 +75,7 @@ class ExcelModifier:
             elif selected_value == "YES":
                 list_index_1.append("*** "+self.step_data[num_id_here][0]+" ***")
             else:
+                selected_value_for_next_U.append(selected_value)
                 if selected_value != "Empty":
                     tiret = " -----> "
                 else:
@@ -94,7 +96,9 @@ class ExcelModifier:
                     else:
                         list_index_1.append("*** NEW PURIFICATION REQUIRED ***")
 
-
+        print("selected_value_for_next_U", selected_value_for_next_U)
+        for iz, z in enumerate(selected_value_for_next_U):
+            self.sheet[self.letters[self.column_linevf +3] + str(iz + 1)].value = z
         print(list_index_1)
         number_of_line_status_local_start = -1
         for i in range(100):

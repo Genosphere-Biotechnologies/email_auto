@@ -140,45 +140,11 @@ def get_info_file(file_path):
         else:
             default_value = ["NO", "ON GOING"] + ["Empty"] * ( len(step_data) -2 ) #+ ["NO"]
     else:
-        default_value = []
-        flag_goon = False
-        if version_toprint > 4:
-            num_max = 5
-        else:
-            num_max = 3
-        if LANGUAGE == "FR":
-            name_check = "SUIVI:"
-        else:
-            name_check = "STATUS:"
-        if LANGUAGE == "FR":
-            for i in range(1, 100):
-                #print("OOOOK",sheet[letters[column_linevf - 1] + str(i)].value)
-                if flag_goon and len(default_value)<num_max :
-                    #print(sheet[letters[column_linevf - 1] + str(i)].value)
-                    if str(sheet[letters[column_linevf - 1] + str(i)].value)[-8:] == "EN COURS":
-                        default_value.append("EN COURS")
-                        #ok
-                    elif str(sheet[letters[column_linevf - 1] + str(i)].value)[-7:] == "ACHEVEE":
-                        default_value.append("ACHEVEE")
-                        #ok
-                    else:
-                        default_value.append("Empty")
-                if sheet[letters[column_linevf - 1] + str(i)].value==name_check:
-                    flag_goon = True
-                    #print("OK", sheet[letters[column_linevf - 1] + str(i)].value)
-        else:
-            for i in range(1, 100):
-                if flag_goon and len(default_value)<num_max :
-                    if str(sheet[letters[column_linevf - 1] + str(i)].value)[-8:] == "ON GOING":
-                        default_value.append("ON GOING")
-                        #ok
-                    elif str(sheet[letters[column_linevf - 1] + str(i)].value)[-7:] == "COMPLETE":
-                        default_value.append("COMPLETE")
-                        #ok
-                    else:
-                        default_value.append("Empty")
-                if sheet[letters[column_linevf - 1] + str(i)].value==name_check:
-                    flag_goon = True
+        default_value = ["NO"]
+        for iz in range(100):
+            if sheet[letters[column_linevf + 3] + str(iz + 1)].value is not None:
+                default_value.append(sheet[letters[column_linevf + 3] + str(iz + 1)].value)
+
 
     print("Default value", default_value)
     print()
