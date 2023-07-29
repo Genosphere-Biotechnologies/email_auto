@@ -46,6 +46,7 @@ class ExcelModifier:
         for ix, x in enumerate(self.default_value):
             self.field_vars[ix].set(value=x)
         self.field_vars[-1].set(value="NO")
+
     def on_next_button_click(self):
         self.root.destroy()
 
@@ -289,6 +290,9 @@ class ExcelModifier:
         self.next_button = Button(self.root, text="Next", command=self.on_next_button_click, font=self.button_font)
         self.next_button.grid(row=2*len(self.step_data) + 12+ offset+ 7*num_repeat, columnspan=len(self.step_data[0][1]) + 1)
 
+        self.next_end = Button(self.root, text="Finish the update", command=self.on_end_button_click, font=self.button_font)
+        self.next_end.grid(row=2 * len(self.step_data) + 12 + offset + 8 * num_repeat,
+                              columnspan=len(self.step_data[0][1]) + 1)
 
         # Bind the checkbox to the function to update the Radiobuttons visibility
         self.field_all_checkbox.config(command=self.update_radiobuttons_visibility)
@@ -329,6 +333,8 @@ class ExcelModifier:
         del self.modify_button
         self.next_button.grid_forget()
         del self.next_button
+        self.next_end.grid_forget()
+        del self.next_end
         for x in self.buttons_list_end:
             for y in x:
                 y.grid_forget()
@@ -336,6 +342,40 @@ class ExcelModifier:
         for x in self.label_list_end:
             x.grid_forget()
             del x
+
+    def create_end_window(self):
+        end_window = Toplevel(self.root)
+        end_window.title("End Window")
+
+        # Add three string fields and one big text field to the new window
+        Label(end_window, text="String Field 1:").grid(row=0, column=0, padx=10, pady=5)
+        Entry(end_window).grid(row=0, column=1, padx=10, pady=5)
+
+        Label(end_window, text="String Field 2:").grid(row=1, column=0, padx=10, pady=5)
+        Entry(end_window).grid(row=1, column=1, padx=10, pady=5)
+
+        Label(end_window, text="String Field 3:").grid(row=2, column=0, padx=10, pady=5)
+        Entry(end_window).grid(row=2, column=1, padx=10, pady=5)
+
+        Label(end_window, text="Big Text Field:").grid(row=3, column=0, padx=10, pady=5)
+        text_field = Text(end_window, width=40, height=10)
+        text_field.grid(row=3, column=1, padx=10, pady=5)
+
+        def save_button_click():
+            # Perform save functionality here (you can access the content of the fields using the variables)
+            print("Saving...")
+            end_window.destroy()
+            self.root.destroy()
+
+        # Add a save button to save the data in the fields
+        save_button = Button(end_window, text="Save", command=save_button_click, font=self.button_font)
+        save_button.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
+
+    def on_end_button_click(self):
+        # Call the create_end_window function when the Next button is clicked
+        self.create_end_window()
+
+        # Destroy the main window
 
 
     def run(self):
